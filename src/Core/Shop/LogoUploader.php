@@ -193,9 +193,9 @@ class LogoUploader
             $idShopGroup = Shop::getContextShopGroupID();
             Shop::setContext(Shop::CONTEXT_ALL);
             $logoAll = Configuration::get($fieldName);
-            Shop::setContext(Shop::CONTEXT_GROUP);
+            Shop::setContext(Shop::CONTEXT_GROUP, (int) $idShopGroup);
             $logoGroup = Configuration::get($fieldName);
-            Shop::setContext(Shop::CONTEXT_SHOP);
+            Shop::setContext(Shop::CONTEXT_SHOP, (int) $idShop);
             $logoShop = Configuration::get($fieldName);
             if ($logoAll != $logoShop && $logoGroup != $logoShop && $logoShop != false) {
                 @unlink($this->imageDirection . Configuration::get($fieldName));
@@ -204,7 +204,7 @@ class LogoUploader
             $idShopGroup = Shop::getContextShopGroupID();
             Shop::setContext(Shop::CONTEXT_ALL);
             $logoAll = Configuration::get($fieldName);
-            Shop::setContext(Shop::CONTEXT_GROUP);
+            Shop::setContext(Shop::CONTEXT_GROUP, (int) $idShopGroup);
             if ($logoAll != Configuration::get($fieldName)) {
                 @unlink($this->imageDirection . Configuration::get($fieldName));
             }
